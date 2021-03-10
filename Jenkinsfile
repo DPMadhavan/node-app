@@ -1,8 +1,9 @@
 pipeline {
    agent any
-   when { branch 'master' } 
+ 
     stages {
-      stage('Installing nodeJS'){       
+      stage('Installing nodeJS'){   
+           when { branch 'master' } 
         steps{
           echo 'Master Branch!'
           sh 'npm install'     
