@@ -5,19 +5,24 @@ pipeline {
 	}
    tools {nodejs "NODEJS"}
    stages {
-     /*stage('Get SCM') {
+     stage('Get SCM') {
 	      steps{     
            // sh 'rm -rf '
 	         sh 'git clone '		
             }
-          } */
-      stage('Installing NodeJS App'){ 
+          } 
+      stage('Build'){ 
         steps{  
           sh 'npm --version'
           sh 'npm install'          
           //sh 'npm start' 
         }
       }
+     stage('Test') {
+      steps {
+        sh 'node test'
+      }
+    }
       stage('Development') {
 			when {
 				expression { BRANCH_NAME =='dev'}
