@@ -11,11 +11,11 @@ pipeline {
 	         sh 'git clone '		
             }
           } */
-      stage('Installing nodeJS & Starting nodeJS Application on port:3000'){ 
+      stage('Installing NodeJS App'){ 
         steps{  
           sh 'npm --version'
           sh 'npm install'          
-          sh 'npm start' 
+          //sh 'npm start' 
         }
       }       
     }
