@@ -7,18 +7,19 @@ pipeline {
    stages {
      stage('Get SCM') {
 	      steps{     
-           // sh 'rm -rf '
-	         sh 'git clone '		
-            }
-          } 
+            sh 'rm -rf node-app'
+	    sh 'git clone https://github.com/DPMadhavan/node-app.git'		
+           }
+         } 
       stage('Build'){ 
         steps{  
           sh 'npm --version'
-          sh 'npm install'          
+          sh 'npm install'  
+	  sh 'docker-compose -f docker-compose.yml -f docker-compose.dev.yml up'
           //sh 'npm start' 
         }
       }
-     stage('Test') {
+     /*stage('Test') {
       steps {
         sh 'node test'
       }
@@ -45,5 +46,5 @@ pipeline {
 					}
 				}
         }
-    }
+    }*/
 }
