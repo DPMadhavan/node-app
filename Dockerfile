@@ -10,3 +10,4 @@ RUN if [ "$NODE_ENV" = "development" ]; \
 	fi
 
 COPY . .
+RUN npm run start
