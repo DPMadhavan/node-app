@@ -1,10 +1,12 @@
-FROM node:10-alpine as build-step
-RUN mkdir /app
-WORKDIR /app
-COPY package.json /app
-RUN npm install
-COPY . /app
-RUN npm run start
+FROM node:8-alpine
 
-FROM nginx:1.17.1-alpine
-COPY --from=build-step /app/build /usr/share/nginx/html
+WORKDIR /usr/src/your-app
+
+COPY package*.json ./
+
+RUN if [ "$NODE_ENV" = "development" ]; \
+	then npm install;  \
+	else npm install --only=production; \
+	fi
+
+COPY . .
