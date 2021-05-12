@@ -14,8 +14,9 @@ pipeline {
       stage('Build'){ 
         steps{  
           sh 'npm --version'
-          sh 'npm install'  
-	  sh 'docker-compose -f docker-compose.yaml -f docker-compose.dev.yaml up'
+          sh 'npm install' 
+          sh 'docker-compose up'
+	  //sh 'docker-compose -f docker-compose.yaml -f docker-compose.dev.yaml up'
           //sh 'npm start' 
         }
       }
